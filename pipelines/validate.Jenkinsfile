@@ -8,7 +8,7 @@ node {
 	def jsonPayloadMap = readJSON text: params.payload
 		
 	def envVarsList = []
-	jsonPayloadMap.each{ k, v -> envVarsList.add("${kv[0].toUpperCase()}=\"${kv[1]}\"")
+	jsonPayloadMap.each{ k, v -> envVarsList.add("${k.toUpperCase()}=\"${envVarsList[k]}\"")
 	}
 	withEnv(envVarsList) {
 		stage('setup') {
